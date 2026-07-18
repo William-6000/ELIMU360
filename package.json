@@ -1,0 +1,33 @@
+{
+  "name": "elimu360",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Elimu360 nationwide Kenyan CBC Senior School learning platform foundation.",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "docker compose up --build",
+    "dev:local": "concurrently \"npm run start:dev -w @elimu360/backend\" \"npm run dev -w @elimu360/frontend\"",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test --workspaces --if-present",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md,yml,yaml,css}": [
+      "prettier --write"
+    ]
+  }
+}
